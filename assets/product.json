@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Afrima",
+        "price": "35.66",
+        "image": "1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Timoo",
+        "price": "65.85",
+        "image": "2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Renark",
+        "price": "33.98",
+        "image": "3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Hrite",
+        "price": "49.89",
+        "image": "4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Damino",
+        "price": "88.67",
+        "image": "5.jpg"
+    }
+]
