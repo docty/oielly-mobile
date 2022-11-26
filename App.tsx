@@ -8,6 +8,7 @@ import { Home } from './components/Home';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
 import { QueryClient, QueryClientProvider  } from 'react-query'
+import { Signup } from './components/Signup';
 const Stack = createBottomTabNavigator();
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
           <Stack.Navigator>
             <Stack.Screen
               name="Home"
-              component={Home}
+              component={Signup}
               options={{
                 headerShown: false,
                 tabBarIcon: () => <Icon as={AntDesign} name="home" />
