@@ -1,6 +1,6 @@
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { Avatar, Box, Center, Flex, HStack, Input, Text, Image, Divider, IconButton, Icon, ScrollView, Stack, Pressable } from "native-base"
+import { Avatar, Box, Center, Flex, HStack, Input, Text, Image, Divider, IconButton, Icon, ScrollView, Stack, Pressable, Button } from "native-base"
 import React, { Children, useEffect } from "react"
 import { useQuery } from "react-query";
 import product from '../assets/product.json'
@@ -26,31 +26,33 @@ export const Home = () => {
     })
     return (
         <>
-            <Box p={'4'} bg={'white'}>
+            <Box p={'4'} bg={'white'} safeArea>
                 <Flex direction="row" justifyContent={'space-between'}>
                     <HStack space="2" alignItems="center">
                         <Avatar source={require('../assets/images/agents/1.jpg')} />
                         <Text fontSize="sm" fontWeight={'semibold'}>Henry Asiedu</Text>
                     </HStack>
 
-                    <Stack bg="white" p="1" rounded="full">
+                    <Stack bg="white" p="1" rounded="full" position={'relative'}>
                         <IconButton
+                            bg={'gray.100'}
                             variant="ghost"
-                            icon={<Icon size="lg" as={AntDesign} name="bells" color="black" />}
+                            onPress={() => navigate('Notification')}
+                            icon={<Icon size="lg" as={Ionicons} name="notifications" color="blueGray.700" />}
                         />
-                        <Text fontSize="xs" mt={'-12'} bg={'red.500'} p={'0.5'} fontWeight={'bold'} color={'white'} borderWidth={'1'} borderColor={'white'} rounded={'full'} style={{ width: 'min-content' }}>25</Text>
+                        <Text fontSize="9" right={'2'} position={'absolute'} bg={'red.500'} p={'0.5'} fontWeight={'bold'} color={'white'} borderWidth={'1'} borderColor={'white'} rounded={'full'} style={{ width: 'min-content' }}>25</Text>
                     </Stack>
                 </Flex>
 
-                <Input my={'4'} placeholder="Find a product" rounded={'lg'} leftElement={<Icon as={AntDesign} name="search1" ml={'3'} />
+                <Input my={'4'} placeholder="Find a product" rounded={'lg'} leftElement={<Icon as={Ionicons} name="search-sharp" ml={'3'} />
                 } />
 
                 <Box bg="blueGray.900" rounded="lg" my={'4'} p={'3'}>
                     <HStack space="3" >
-                        <Flex flexDirection={'column'} justifyContent={'space-around'}>
+                        <Flex flexDirection={'column'} justifyContent={'space-around'} flex={'1'}>
                             <Text fontSize="3xl" fontWeight={'bold'} color={'white'}>50% Off</Text>
                             <Text fontSize="lg" fontWeight={'semibold'} color={'white'}>Special Deal</Text>
-                            <Text fontSize="md" color={'white'}>Get discount on every order, only for this month </Text>
+                            <Text fontSize="sm" color={'gray.300'}>Get discount on every order, only for this month </Text>
                         </Flex>
                         <Image
                             source={require('../assets/images/product/product-1-1-109x122.jpg')}
@@ -62,21 +64,21 @@ export const Home = () => {
                 </Box>
 
                 <HStack space="3" alignItems="center">
-                    <Center bg="primary.400" p={'1'} rounded={'full'} minW={'1/6'} >
+                    <Button bg="primary.400" p={'1'} rounded={'lg'} minW={'1/6'} >
                         <Text fontSize="md" color={'white'}>All</Text>
-                    </Center>
-                    <Center borderWidth={'1'} p={'1'} borderColor={'gray.200'} rounded={'full'} minW={'1/6'} >
+                    </Button>
+                    <Button borderWidth={'1'} bg={'white'} p={'1'} borderColor={'gray.200'} rounded={'lg'} minW={'1/6'} >
                         <Text fontSize="md" >Shoes</Text>
-                    </Center>
-                    <Center borderWidth={'1'} p={'1'} borderColor={'gray.200'} rounded={'full'} minW={'1/6'} >
+                    </Button>
+                    <Button borderWidth={'1'} bg={'white'} p={'1'} borderColor={'gray.200'} rounded={'lg'} minW={'1/6'} >
                         <Text fontSize="md"  >Clothes</Text>
-                    </Center>
-                    <Center borderWidth={'1'} p={'1'} borderColor={'gray.200'} rounded={'full'} minW={'1/6'} >
+                    </Button>
+                    <Button borderWidth={'1'} bg={'white'} p={'1'} borderColor={'gray.200'} rounded={'lg'} minW={'1/6'} >
                         <Text fontSize="md"  >Bags</Text>
-                    </Center>
-                    <Center borderWidth={'1'} p={'1'} borderColor={'gray.200'} rounded={'full'} minW={'1/6'} >
+                    </Button>
+                    <Button borderWidth={'1'} bg={'white'} p={'1'} borderColor={'gray.200'} rounded={'lg'} minW={'1/6'} >
                         <Text fontSize="md"  >Belt</Text>
-                    </Center>
+                    </Button>
                 </HStack>
 
             </Box>
@@ -87,10 +89,7 @@ export const Home = () => {
                     {
                         Children.toArray(data?.map(item => (
                             <Box bg={'gray.100'} position={'relative'} m={'2'} p={'3'} flexGrow={'1'} flexBasis={'200'}  >
-                                <Pressable
-                                    onPress={() => navigate('Details')}
-
-                                >
+                                <Pressable onPress={() => navigate('Details')}  >
                                     <Image
                                         source={require('../assets/images/product/product-3-4-109x122.jpg')}
                                         alt="Alternate Text"
@@ -99,22 +98,20 @@ export const Home = () => {
 
                                     />
                                 </Pressable>
-
-
                                 <Text fontSize="sm" fontWeight={'bold'}>{item.name}</Text>
                                 <HStack space="3" alignItems="center">
                                     <Text fontSize="xs" color={'red.700'} fontWeight={'bold'}>${item.price}</Text>
                                     <Divider orientation="vertical" />
                                     <Text fontSize="xs">
                                         <Icon as={Ionicons} name="star" size={'xs'} mr={'2'} />
-
-                                        4.5</Text>
+                                        4.5
+                                    </Text>
                                 </HStack>
                                 <IconButton
                                     position={'absolute'}
                                     right={'2'}
                                     variant="solid"
-                                    icon={<Icon size="xs" as={AntDesign} name="search1" color="white" />}
+                                    icon={<Icon size="md" as={Ionicons} name="heart-sharp" color="white" />}
                                     onPress={() => {
                                         console.log('hello')
                                     }}
@@ -123,9 +120,10 @@ export const Home = () => {
                                 <IconButton
                                     position={'absolute'}
                                     right={'2'}
-                                    top={'12'}
+                                    bg={'blueGray.700'}
+                                    top={'16'}
                                     variant="solid"
-                                    icon={<Icon size="xs" as={AntDesign} name="shoppingcart" color="white" />}
+                                    icon={<Icon size="md" as={Ionicons} name="cart-sharp" color="white" />}
                                     onPress={() => {
                                         console.log('hello')
                                     }}

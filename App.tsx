@@ -2,15 +2,17 @@ import React from 'react';
 import { NativeBaseProvider } from 'native-base';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { NavigationContainer } from '@react-navigation/native';
 import { Onboarding } from './components/Onboarrding';
 import Index from './components/Index';
-import { NavigationContainer } from '@react-navigation/native';
 import { Address } from './components/Address';
 import { Payment } from './components/Payment';
 import { Login } from './components/Login';
 import { Signup } from './components/Signup';
 import { ForgotPassword } from './components/ForgotPassword';
 import { Details } from './components/Details';
+import { Notification } from './components/Notification';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -32,6 +34,11 @@ export default function App() {
             <Stack.Screen
               name="Details"
               component={Details}
+
+            />
+             <Stack.Screen
+              name="Notification"
+              component={Notification}
 
             />
             <Stack.Screen

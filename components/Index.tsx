@@ -1,11 +1,8 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Icon, NativeBaseProvider } from 'native-base';
-import { NavigationContainer } from '@react-navigation/native';
+import { Icon, Text } from 'native-base';
 import { Home } from './Home';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AntDesign } from '@expo/vector-icons';
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { Ionicons } from '@expo/vector-icons';
 import { Cart } from './Cart';
 import { Login } from './Login';
 const Stack = createBottomTabNavigator();
@@ -20,7 +17,8 @@ export default function Index() {
                 component={Home}
                 options={{
                     headerShown: false,
-                    tabBarIcon: () => <Icon as={AntDesign} name="home" />
+                    tabBarLabelStyle: { fontSize: 12 },
+                    tabBarIcon: () => <Icon as={Ionicons} name="home" size={'lg'} />
                 }}
             />
 
@@ -29,15 +27,18 @@ export default function Index() {
                 component={Cart}
                 options={{
                     headerShown: false,
-                    tabBarIcon: () => <Icon as={AntDesign} name="shoppingcart" />
+                    tabBarLabelStyle: { fontSize: 12 },
+                    tabBarIcon: () => <Icon as={Ionicons} name="cart" size={'lg'} />,
+                    tabBarBadge: 0
                 }}
             />
             <Stack.Screen
                 name="Profile"
-                component={isAuth ? Cart: Login}
+                component={isAuth ? Cart : Login}
                 options={{
                     headerShown: false,
-                    tabBarIcon: () => <Icon as={AntDesign} name="shoppingcart" />
+                    tabBarLabelStyle: { fontSize: 12 },
+                    tabBarIcon: () => <Icon as={Ionicons} name="file-tray" size={'lg'} />
                 }}
             />
 
@@ -45,11 +46,4 @@ export default function Index() {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+
