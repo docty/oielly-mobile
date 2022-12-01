@@ -1,10 +1,11 @@
 import { AntDesign, Ionicons } from "@expo/vector-icons"
+import { useNavigation } from "@react-navigation/native"
 import { Flex, Center, Box, Button, Image, FormControl, Text, Input, Checkbox, HStack, Icon, IconButton, Link } from "native-base"
 import React from "react"
 import { ImageBackground } from "react-native"
 
 export const Login = () => {
-
+    const { navigate } = useNavigation<any>();
     return (
         <Box bg={'white'} flex={'1'}>
             <Center roundedBottom={'3xl'} p={'6'} pb={'0'} bg={'danger.500'}>
@@ -22,7 +23,7 @@ export const Login = () => {
             <Box pl={'8'} pr={'8'}>
 
                 <Box>
-                    
+
                     <FormControl   >
                         <FormControl.Label>Email</FormControl.Label>
                         <Input rounded={'3xl'} pl={'5'} InputLeftElement={<Icon pl={'3'} as={Ionicons} name="home" />
@@ -33,10 +34,10 @@ export const Login = () => {
                         <Input rounded={'3xl'} pl={'5'} InputLeftElement={<Icon pl={'3'} as={Ionicons} name="lock-closed" />
                         } p={3} placeholder="Password" type="password" />
                     </FormControl>
-                     
+
                 </Box>
 
-                <Button   _text={{ fontWeight: 'bold', fontSize: 'xs' }} variant={'link'}>  Forgot Password? </Button>
+                <Button _text={{ fontWeight: 'bold', fontSize: 'xs' }} variant={'link'}  onPress={() => navigate('ForgotPassword')}>  Forgot Password? </Button>
 
                 <Button colorScheme="primary" rounded={'3xl'} _text={{ fontWeight: 'bold', fontSize: 'md' }} >  Login  </Button>
 
@@ -56,7 +57,7 @@ export const Login = () => {
 
                 <HStack alignItems={'center'} justifyContent={'center'}>
                     <Text fontSize="md">Don't have an account?</Text>
-                    <Button variant={'link'} _text={{ color: 'red.500' }}> Sign up </Button>
+                    <Button variant={'link'} _text={{ color: 'red.500' }} onPress={() => navigate('Signup')}> Sign up </Button>
                 </HStack>
             </Box>
 

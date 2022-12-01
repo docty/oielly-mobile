@@ -1,10 +1,12 @@
 import { AntDesign, Ionicons } from "@expo/vector-icons"
+import { useNavigation } from "@react-navigation/native"
 import { Flex, Center, Box, Button, Image, FormControl, Text, Input, Checkbox, HStack, Icon, IconButton, Link } from "native-base"
 import React from "react"
 import { ImageBackground } from "react-native"
 
 export const Signup = () => {
 
+    const { navigate } = useNavigation<any>()
     return (
         <Box bg={'white'} flex={'1'}>
             <Center roundedBottom={'3xl'} p={'6'} pb={'0'} bg={'danger.500'}>
@@ -45,7 +47,7 @@ export const Signup = () => {
                 </Box>
 
                 <Checkbox value="checkbox" my={'4'}>
-                    I agree to<Link  href="https://nativebase.io">Terms</Link>and<Link href="https://nativebase.io">Privacy Policy</Link>
+                    I agree to<Link href="https://nativebase.io">Terms</Link>and<Link href="https://nativebase.io">Privacy Policy</Link>
                 </Checkbox>
 
                 <Button colorScheme="primary" rounded={'3xl'} _text={{ fontWeight: 'bold', fontSize: 'md' }} >  Sign Up  </Button>
@@ -66,7 +68,7 @@ export const Signup = () => {
 
                 <HStack alignItems={'center'} justifyContent={'center'}>
                     <Text fontSize="md">Already have an account?</Text>
-                    <Button variant={'link'} _text={{ color: 'red.500' }}> Login </Button>
+                    <Button variant={'link'} _text={{ color: 'red.500' }} onPress={() => navigate('Login')}> Login </Button>
                 </HStack>
             </Box>
 
